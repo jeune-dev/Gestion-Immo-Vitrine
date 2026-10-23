@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "./theme/theme.css";
+
+@theme inline {
+  --color-primaire: var(--gi-primaire);
+  --color-primaire-survol: var(--gi-primaire-survol);
+  --color-primaire-teinte: var(--gi-primaire-teinte);
+  --color-sur-primaire: var(--gi-sur-primaire);
+  --color-secondaire: var(--gi-secondaire);
+  --color-secondaire-survol: var(--gi-secondaire-survol);
+  --color-secondaire-teinte: var(--gi-secondaire-teinte);
+  --color-sur-secondaire: var(--gi-sur-secondaire);
+  --color-fond: var(--gi-fond);
+  --color-surface: var(--gi-surface);
+  --color-surface-alt: var(--gi-surface-alt);
+  --color-bordure: var(--gi-bordure);
+  --color-bordure-forte: var(--gi-bordure-forte);
+  --color-bordure-champ: var(--gi-bordure-champ);
+  --color-texte: var(--gi-texte);
+  --color-texte-secondaire: var(--gi-texte-secondaire);
+  --color-texte-discret: var(--gi-texte-discret);
+  --color-succes: var(--gi-succes);
+  --color-succes-fond: var(--gi-succes-fond);
+  --color-avertissement: var(--gi-avertissement);
+  --color-avertissement-fond: var(--gi-avertissement-fond);
+  --color-danger: var(--gi-danger);
+  --color-danger-fond: var(--gi-danger-fond);
+  --color-info: var(--gi-info);
+  --color-info-fond: var(--gi-info-fond);
+  --color-neutre: var(--gi-neutre);
+  --color-neutre-fond: var(--gi-neutre-fond);
+  --font-sans: var(--gi-police);
+  --font-display: 'Poppins', var(--gi-police);
+  --color-nuit: var(--site-nuit);
+  --color-nuit-2: var(--site-nuit-2);
+  --color-creme: var(--site-creme);
+  --color-bleu-marque: var(--site-bleu);
+  --radius-petit: 6px;
+  --radius-pilule: 999px;
+  --radius-carte: 12px;
+  --radius-feuille: 16px;
+  --shadow-focus: var(--gi-focus);
+  --shadow-carte: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.06);
+  --shadow-flottant: 0 12px 32px -12px rgb(11 35 64 / 0.22), 0 2px 6px rgb(11 35 64 / 0.06);
+  --radius-media: 14px;
+}
+
+/*
+ * Couleurs propres au site vitrine (dérivées de la charte) :
+ * sections « nuit » (bleu très foncé, identiques dans les deux modes) et sections « crème ».
+ */
+:root {
+  --site-nuit: #0B2340;
+  --site-nuit-2: #10305A;
+  --site-bleu: #1D4E89;
+  --site-creme: #FBF5EA;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --site-creme: #141E2A; } }
+:root[data-theme="dark"] { --site-creme: #141E2A; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+:focus-visible { outline: none; box-shadow: var(--gi-focus); border-radius: var(--gi-rayon-petit); }
+::selection { background: var(--gi-secondaire); color: var(--gi-sur-secondaire); }
+
+/* Voile bleu nuit sur les photos des bandeaux : texte blanc toujours lisible. */
+.site-voile {
+  background:
+    linear-gradient(90deg, rgb(11 35 64 / 0.92) 0%, rgb(11 35 64 / 0.72) 45%, rgb(11 35 64 / 0.25) 100%),
+    linear-gradient(0deg, rgb(11 35 64 / 0.85) 0%, transparent 40%);
+}
+.site-voile-plein { background: linear-gradient(0deg, rgb(11 35 64 / 0.92), rgb(11 35 64 / 0.6)); }
+
+/*
+ * Échelle typographique fluide (Poppins fin pour les titres, Inter pour le texte).
+ * Une seule source de tailles : les pages n'imposent pas de tailles de titres en dur.
+ */
+.t-hero { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.6rem); line-height: 1.04; letter-spacing: -0.025em; }
+.t-display { font-family: var(--font-display); font-weight: 300; font-size: clamp(2rem, 1.5rem + 1.9vw, 3.25rem); line-height: 1.1; letter-spacing: -0.02em; }
+.t-titre { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.375rem); line-height: 1.3; letter-spacing: -0.01em; }
+.t-chapo { font-size: clamp(1.05rem, 1rem + 0.3vw, 1.25rem); line-height: 1.6; }
+
+/* Lien texte : soulignement qui se trace au survol (CSS seul). */
+.lien {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size .25s ease;
+}
+.lien:hover, .lien:focus-visible { background-size: 100% 1px; }
+
+/* Composants de la charte (CHARTE-GRAPHIQUE-ADMIN.md, section 7). */
+.gi-champ {
+  width: 100%; box-sizing: border-box; min-height: 40px; padding: 0 var(--gi-espace-md);
+  background: var(--gi-surface); color: var(--gi-texte);
+  border: 1px solid var(--gi-bordure-champ); border-radius: var(--gi-rayon);
+  font: inherit;
+}
+.gi-champ::placeholder { color: var(--gi-texte-discret); }
+.gi-champ:focus { outline: none; border-color: var(--gi-primaire); box-shadow: var(--gi-focus); }
+.gi-champ[aria-invalid="true"] { border-color: var(--gi-danger); }
+.gi-badge {
+  display: inline-flex; align-items: center; gap: var(--gi-espace-xs);
+  padding: 2px 10px; border-radius: var(--gi-rayon-pilule);
+  font-size: var(--gi-taille-legende); font-weight: 600; white-space: nowrap;
+  color: var(--gi-neutre); background: var(--gi-neutre-fond);
+}
+.gi-badge[data-ton="succes"] { color: var(--gi-succes); background: var(--gi-succes-fond); }
+.gi-badge[data-ton="avertissement"] { color: var(--gi-avertissement); background: var(--gi-avertissement-fond); }
+.gi-badge[data-ton="danger"] { color: var(--gi-danger); background: var(--gi-danger-fond); }
+.gi-badge[data-ton="info"] { color: var(--gi-info); background: var(--gi-info-fond); }
+
+@keyframes gi-skeleton { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.gi-skeleton {
+  background: linear-gradient(90deg, var(--gi-surface-alt) 25%, var(--gi-bordure) 50%, var(--gi-surface-alt) 75%);
+  background-size: 200% 100%;
+  animation: gi-skeleton 1.6s ease-in-out infinite;
+  border-radius: var(--gi-rayon);
+}
+@media (prefers-reduced-motion: reduce) { .gi-skeleton { animation: none; } }

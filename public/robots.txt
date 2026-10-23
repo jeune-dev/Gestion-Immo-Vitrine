@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Remplacer par le domaine de production
+Sitemap: https://www.exemple.sn/sitemap.xml

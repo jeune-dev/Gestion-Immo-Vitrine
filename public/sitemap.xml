@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Remplacer https://www.exemple.sn par le domaine de production -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.exemple.sn/</loc></url>
+  <url><loc>https://www.exemple.sn/fonctionnalites</loc></url>
+  <url><loc>https://www.exemple.sn/tarifs</loc></url>
+  <url><loc>https://www.exemple.sn/proprietaires</loc></url>
+  <url><loc>https://www.exemple.sn/locataires</loc></url>
+  <url><loc>https://www.exemple.sn/contact</loc></url>
+  <url><loc>https://www.exemple.sn/mentions-legales</loc></url>
+  <url><loc>https://www.exemple.sn/confidentialite</loc></url>
+</urlset>

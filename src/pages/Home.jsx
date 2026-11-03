@@ -108,7 +108,7 @@ function BeforeAfter() {
         <Reveal delay={0.08} className="lg:col-span-7">
           <div className="hidden grid-cols-2 border-b border-bordure pb-4 text-xs font-semibold tracking-[0.14em] uppercase sm:grid">
             <p className="text-texte-discret">Aujourd'hui</p>
-            <p className="pl-6 text-primaire">Avec Gestion Immobilière</p>
+            <p className="pl-6 text-primaire">Avec Kërimmo</p>
           </div>
           <ul className="border-t border-bordure sm:border-t-0">
             {comparison.map(([before, after]) => (

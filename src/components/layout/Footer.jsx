@@ -42,6 +42,9 @@ export function Footer() {
         <p>© {new Date().getFullYear()} {site.brand.name}. Tous droits réservés.</p>
         <p>Paiements Wave · Orange Money · Relances WhatsApp</p>
       </Container>
+      <Container className="border-t border-white/10 py-4 pr-20 text-center text-xs tracking-[0.18em] text-white/50 uppercase lg:pr-24">
+        By <span className="font-semibold text-white/80">KODAFRIK</span>
+      </Container>
     </footer>
   );
 }

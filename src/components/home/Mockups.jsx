@@ -1,74 +1,28 @@
-import { Bell, Building2, CheckCircle2, LayoutDashboard, MessageCircle, Receipt, Smartphone, Users, Wallet } from 'lucide-react';
+import { Bell, CheckCircle2, MessageCircle, Receipt, Smartphone } from 'lucide-react';
 
 /*
- * Aperçus du produit dessinés en HTML/CSS (aucune capture d'écran).
+ * Aperçus du produit : tableau de bord en image (public/images), téléphone et bulle WhatsApp en HTML/CSS.
  * Les montants et noms sont des données d'illustration, signalées comme telles.
  */
 
-const rows = [
-  { name: 'A. Diallo', lot: 'Apt B2', amount: '150 000', label: 'Payé', ton: 'succes' },
-  { name: 'F. Ndiaye', lot: 'Apt A1', amount: '120 000', label: 'À payer', ton: 'avertissement' },
-  { name: 'M. Sow', lot: 'Apt C4', amount: '185 000', label: 'En retard', ton: 'danger' },
-  { name: 'K. Fall', lot: 'Apt B1', amount: '150 000', label: 'Payé', ton: 'succes' },
-];
-const bars = [52, 64, 58, 72, 80, 76, 88, 94];
-
 export function DashboardMockup() {
   return (
-    <figure className="overflow-hidden rounded-media border border-bordure bg-surface shadow-flottant" aria-label="Aperçu du tableau de bord propriétaire (données d'illustration)">
+    <figure className="overflow-hidden rounded-media border border-bordure bg-surface shadow-flottant">
       <div className="flex items-center gap-1.5 border-b border-bordure bg-surface-alt px-4 py-3" aria-hidden="true">
         <span className="size-2.5 rounded-full bg-bordure-forte" /><span className="size-2.5 rounded-full bg-bordure-forte" /><span className="size-2.5 rounded-full bg-bordure-forte" />
         <span className="ml-3 h-5 flex-1 rounded-pilule bg-surface" />
       </div>
-      <div className="grid grid-cols-[52px_1fr] sm:grid-cols-[150px_1fr]" aria-hidden="true">
-        <aside className="space-y-1 border-r border-bordure p-2 sm:p-3">
-          {[[LayoutDashboard, 'Tableau de bord', true], [Building2, 'Immeubles'], [Users, 'Locataires'], [Wallet, 'Loyers'], [Receipt, 'Quittances']].map(([I, l, a]) => (
-            <div key={l} className={`flex items-center gap-2 rounded-[8px] px-2 py-2 text-xs font-medium ${a ? 'bg-primaire-teinte text-primaire' : 'text-texte-secondaire'}`}>
-              <I className="size-4 shrink-0" /><span className="hidden sm:inline">{l}</span>
-            </div>
-          ))}
-        </aside>
-        <div className="min-w-0 space-y-3 p-3 sm:p-4">
-          <div className="grid grid-cols-3 gap-2 sm:gap-3">
-            <Kpi label="Encaissé ce mois" value="2 450 000" unit="FCFA" />
-            <Kpi label="Occupation" value="94" unit="%" />
-            <Kpi label="En retard" value="2" unit="loyers" danger />
-          </div>
-          <div className="rounded-carte border border-bordure p-3">
-            <p className="text-[11px] font-semibold text-texte-secondaire">Loyers encaissés</p>
-            <div className="mt-2 flex h-20 items-end gap-1.5">
-              {bars.map((h, i) => (
-                <span key={i} className={`flex-1 rounded-t-[4px] ${i === bars.length - 1 ? 'bg-secondaire' : 'bg-primaire/80'}`} style={{ height: `${h}%` }} />
-              ))}
-            </div>
-          </div>
-          <div className="rounded-carte border border-bordure">
-            {rows.map((r) => (
-              <div key={r.name} className="flex items-center justify-between gap-2 border-b border-bordure px-3 py-2 last:border-0">
-                <div className="min-w-0">
-                  <p className="truncate text-xs font-semibold text-texte">{r.name}</p>
-                  <p className="text-[11px] text-texte-secondaire">{r.lot}</p>
-                </div>
-                <span className="gi-montant hidden text-xs text-texte sm:inline">{r.amount} FCFA</span>
-                <span className="gi-badge" data-ton={r.ton}>{r.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <img
+        src="/images/apercu-tableau-de-bord.webp"
+        alt="Aperçu du tableau de bord Kërimmo : loyers encaissés, taux d'occupation, loyers en retard et derniers baux (données d'illustration)"
+        width="1672"
+        height="941"
+        loading="lazy"
+        decoding="async"
+        className="block h-auto w-full"
+      />
       <figcaption className="sr-only">Données d'illustration</figcaption>
     </figure>
-  );
-}
-
-function Kpi({ label, value, unit, danger }) {
-  return (
-    <div className="rounded-carte border border-bordure p-2 sm:p-3">
-      <p className="truncate text-[10px] font-medium text-texte-secondaire sm:text-[11px]">{label}</p>
-      <p className={`gi-montant mt-1 text-sm font-semibold sm:text-lg ${danger ? 'text-danger' : 'text-texte'}`}>
-        {value} <span className="text-[10px] font-medium text-texte-secondaire">{unit}</span>
-      </p>
-    </div>
   );
 }
 

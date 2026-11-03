@@ -9,8 +9,8 @@ const whatsapp = env.VITE_WHATSAPP_NUMBER?.replace(/\D/g, '') || null;
 
 export const site = {
   brand: {
-    name: 'Gestion Immobilière',
-    short: 'Gestion Immo',
+    name: 'Kërimmo',
+    short: 'Kërimmo',
     tagline: 'La gestion locative simplifiée',
   },
   appUrl: env.VITE_APP_URL?.trim() || null,

@@ -45,7 +45,6 @@ export function Section({ id, tone = 'clair', className, children, ...rest }) {
 export function Eyebrow({ children, className, light }) {
   return (
     <p className={cx('inline-flex items-center gap-3 text-xs font-semibold tracking-[0.18em] uppercase', light ? 'text-secondaire' : 'text-primaire', className)}>
-      <span className="h-px w-6 bg-current" aria-hidden="true" />
       {children}
     </p>
   );
